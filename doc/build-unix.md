@@ -1,10 +1,33 @@
 UNIX BUILD NOTES
 ====================
+
+No BS Guide:
+---------------------
+
+Start with Ubuntu 22 LTS - more complicated on others
+
+git clone https://github.com/adaloveless/YukiCoin
+cd YukiCoin
+sudo apt-get install build-essential cmake pkgconf python3
+sudo apt-get install build-essential cmake pkgconf python3
+sudo apt-get install libevent-dev libboost-dev
+sudo apt install libsqlite3-dev
+sudo apt-get install libzmq3-dev
+sudo apt install systemtap-sdt-dev
+sudo apt-get install qtbase5-dev qttools5-dev qttools5-dev-tools
+sudo apt install qtwayland5
+sudo apt-get install libqrencode-dev
+
 Some notes on how to build Bitcoin Core in Unix.
 
-(For BSD specific instructions, see `build-*bsd.md` in this directory.)
+cmake -B build
+cmake --build build    # use "-j N" for N parallel jobs
+cmake --install build  # optional
 
-To Build
+
+
+
+Extended Build instructions for other distros To Build
 ---------------------
 
 ```bash
