@@ -1,9 +1,9 @@
-// Copyright (c) The Bitcoin Core developers
+// Copyright (c) The YukiCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_UTIL_CLUSTER_LINEARIZE_H
-#define BITCOIN_TEST_UTIL_CLUSTER_LINEARIZE_H
+#ifndef YukiCoin_TEST_UTIL_CLUSTER_LINEARIZE_H
+#define YukiCoin_TEST_UTIL_CLUSTER_LINEARIZE_H
 
 #include <cluster_linearize.h>
 #include <serialize.h>
@@ -408,4 +408,4 @@ void SanityCheck(const DepGraph<SetType>& depgraph, Span<const ClusterIndex> lin
 
 } // namespace
 
-#endif // BITCOIN_TEST_UTIL_CLUSTER_LINEARIZE_H
+#endif // YukiCoin_TEST_UTIL_CLUSTER_LINEARIZE_H

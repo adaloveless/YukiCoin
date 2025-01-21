@@ -1,8 +1,8 @@
 // Copyright (c) 2024
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef BITCOIN_NODE_TXDOWNLOADMAN_IMPL_H
-#define BITCOIN_NODE_TXDOWNLOADMAN_IMPL_H
+#ifndef YukiCoin_NODE_TXDOWNLOADMAN_IMPL_H
+#define YukiCoin_NODE_TXDOWNLOADMAN_IMPL_H
 
 #include <node/txdownloadman.h>
 
@@ -201,4 +201,4 @@ protected:
     std::optional<std::chrono::seconds> OrphanResolutionCandidate(NodeId nodeid, const Wtxid& orphan_wtxid, size_t num_parents);
 };
 } // namespace node
-#endif // BITCOIN_NODE_TXDOWNLOADMAN_IMPL_H
+#endif // YukiCoin_NODE_TXDOWNLOADMAN_IMPL_H

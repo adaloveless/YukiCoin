@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitcoin Core developers
+// Copyright (c) 2022 The YukiCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SUPPORT_ALLOCATORS_POOL_H
-#define BITCOIN_SUPPORT_ALLOCATORS_POOL_H
+#ifndef YukiCoin_SUPPORT_ALLOCATORS_POOL_H
+#define YukiCoin_SUPPORT_ALLOCATORS_POOL_H
 
 #include <array>
 #include <cassert>
@@ -346,4 +346,4 @@ bool operator!=(const PoolAllocator<T1, MAX_BLOCK_SIZE_BYTES, ALIGN_BYTES>& a,
     return !(a == b);
 }
 
-#endif // BITCOIN_SUPPORT_ALLOCATORS_POOL_H
+#endif // YukiCoin_SUPPORT_ALLOCATORS_POOL_H

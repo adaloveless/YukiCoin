@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-present The Bitcoin Core developers
+// Copyright (c) 2009-present The YukiCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_TIME_H
-#define BITCOIN_UTIL_TIME_H
+#ifndef YukiCoin_UTIL_TIME_H
+#define YukiCoin_UTIL_TIME_H
 
 #include <chrono> // IWYU pragma: export
 #include <cstdint>
@@ -119,4 +119,4 @@ struct timeval MillisToTimeval(int64_t nTimeout);
  */
 struct timeval MillisToTimeval(std::chrono::milliseconds ms);
 
-#endif // BITCOIN_UTIL_TIME_H
+#endif // YukiCoin_UTIL_TIME_H
