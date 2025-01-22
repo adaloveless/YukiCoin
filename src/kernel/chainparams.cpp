@@ -643,9 +643,9 @@ public:
 
         genesis = CreateGenesisBlock(1296688602, 0 /*2 JRN*/, 0x0000207f, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-std::cout << "Expecting Genesis Hash: 00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533" << std::endl;
+std::cout << "Expecting Genesis Hash: 1bb78b67a39b8e72d1e2593a96e2b4b8d075cb023420502438bc2af5a78ea90a" << std::endl;
 std::cout << "Got Genesis Hash: " << consensus.hashGenesisBlock.ToString() << std::endl;
-        assert(consensus.hashGenesisBlock == uint256{"00463c31842702e80b225d3583ec57460ff33d7c7ec202e93ab7c79ed7ecfb9d"});
+        assert(consensus.hashGenesisBlock == uint256{"1bb78b67a39b8e72d1e2593a96e2b4b8d075cb023420502438bc2af5a78ea90a"});
         // Log the expected and actual Merkle root before assertion
 std::cout << "Expected Merkle Root: 00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533" << std::endl;
 std::cout << "Actual Merkle Root: " << genesis.hashMerkleRoot.ToString() << std::endl;
