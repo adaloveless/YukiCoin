@@ -1,4 +1,5 @@
 import hashlib
+import sys
 
 def double_sha256(data):
     """Perform a double SHA-256 hash."""
@@ -22,9 +23,17 @@ def calculate_merkle_root(tx_hashes):
 
     return tx_hashes[0]
 
-# Replace this with the actual coinbase transaction hash (in bytes) for Testnet4
-coinbase_tx_hash = bytes.fromhex("4e9b0c198d9e82e62c7dbe7c2e2d7c2c8c19c33b1b4b2b7c8d4b9b2d9c19e82e")
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python3 calculate_merkle_root.py <coinbase_tx_hash>")
+        sys.exit(1)
 
-# Calculate the Merkle root
-merkle_root = calculate_merkle_root([coinbase_tx_hash])
-print("Merkle Root:", merkle_root.hex())
+    try:
+        # Read the coinbase transaction hash from the command line
+        coinbase_tx_hash = bytes.fromhex(sys.argv[1])
+        # Calculate the Merkle root
+        merkle_root = calculate_merkle_root([coinbase_tx_hash])
+        print("Merkle Root:", merkle_root.hex())
+    except ValueError as e:
+        print(f"Error: {e}")
+        sys.exit(1)
