@@ -43,7 +43,7 @@ set(CMAKE_TRY_COMPILE_PLATFORM_VARIABLES
 project(YukiCoinCore
   VERSION ${CLIENT_VERSION_MAJOR}.${CLIENT_VERSION_MINOR}.${CLIENT_VERSION_BUILD}
   DESCRIPTION "YukiCoin client software"
-  HOMEPAGE_URL "https://YukiCoincore.org/"
+  HOMEPAGE_URL "https://roke.club/"
   LANGUAGES NONE
 )
 
@@ -54,7 +54,7 @@ endif()
 
 set(COPYRIGHT_HOLDERS "The %s developers")
 set(COPYRIGHT_HOLDERS_FINAL "The ${CLIENT_NAME} developers")
-set(CLIENT_BUGREPORT "https://github.com/YukiCoin/YukiCoin/issues")
+set(CLIENT_BUGREPORT "https://github.com/adaloveless/YukiCoin/issues")
 
 #=============================
 # Language setup

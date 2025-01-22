@@ -37,7 +37,7 @@ If you want to build the Windows installer using the `deploy` build target, you 
 
 Acquire the source in the usual way:
 
-    git clone https://github.com/YukiCoin/YukiCoin.git
+    git clone https://github.com/adaloveless/YukiCoin.git
     cd YukiCoin
 
 Note that for WSL the YukiCoin Core source path MUST be somewhere in the default mount file system, for
