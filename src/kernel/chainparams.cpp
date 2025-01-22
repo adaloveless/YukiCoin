@@ -134,13 +134,12 @@ public:
         m_assumed_blockchain_size = 620;
         m_assumed_chain_state_size = 14;
 
-        assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
         
         // Mainnet Genesis Block
         genesis = CreateGenesisBlock(1231006505, 35, 0x1f00ffff, 1, 50 * COIN);
-        consensus.hashGenesisBlock = uint256S("0x00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533");
-        assert(consensus.hashGenesisBlock == uint256S("0x00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533"));
-
+        consensus.hashGenesisBlock = uint256("0x00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533");
+        assert(consensus.hashGenesisBlock == uint256("0x00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533"));
+        assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
         
         //genesis = CreateGenesisBlock(1231006505, 0 /*2083236893 JRN*/, 0x00001d00, 1, 50 * COIN);
         //consensus.hashGenesisBlock = genesis.GetHash();
@@ -261,11 +260,10 @@ public:
         m_assumed_blockchain_size = 93;
         m_assumed_chain_state_size = 19;
 
-        assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
         // Testnet3 Genesis Block
         genesis = CreateGenesisBlock(1296688602, 133, 0x1f00ffff, 1, 50 * COIN);
-        consensus.hashGenesisBlock = uint256S("0x004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9");
-        assert(consensus.hashGenesisBlock == uint256S("0x004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9"));
+        consensus.hashGenesisBlock = uint256("0x004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9");
+        assert(consensus.hashGenesisBlock == uint256("0x004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9"));
 
 
         vFixedSeeds.clear();
@@ -368,7 +366,6 @@ public:
         genesis = CreateGenesisBlock(1714777860, 402, 0x1f00ffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = uint256S("0x0011551dedbc24d0228928acda77f903768fd43c2094a0fb92479bd8e037376a");
         assert(consensus.hashGenesisBlock == uint256S("0x0011551dedbc24d0228928acda77f903768fd43c2094a0fb92479bd8e037376a"));
-
         assert(genesis.hashMerkleRoot == uint256{"7aa0a7ae1e223414cb807e40cd57e667b718e42aaf9306db9102fe28912b7b4e"});
 
         vFixedSeeds.clear();
