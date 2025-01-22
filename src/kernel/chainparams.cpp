@@ -136,9 +136,12 @@ public:
 
         
         // Mainnet Genesis Block
-        genesis = CreateGenesisBlock(1231006505, 35, 0x1f00ffff, 1, 50 * COIN);
-        consensus.hashGenesisBlock = uint256("0x00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533");
-        assert(consensus.hashGenesisBlock == uint256("0x00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533"));
+// Mainnet Genesis Block
+genesis = CreateGenesisBlock(1231006505, 35, 0x1f00ffff, 1, 50 * COIN);
+consensus.hashGenesisBlock = uint256("00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533");
+assert(consensus.hashGenesisBlock == uint256("00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533"));
+
+
         assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
         
         //genesis = CreateGenesisBlock(1231006505, 0 /*2083236893 JRN*/, 0x00001d00, 1, 50 * COIN);
@@ -261,9 +264,12 @@ public:
         m_assumed_chain_state_size = 19;
 
         // Testnet3 Genesis Block
-        genesis = CreateGenesisBlock(1296688602, 133, 0x1f00ffff, 1, 50 * COIN);
-        consensus.hashGenesisBlock = uint256("0x004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9");
-        assert(consensus.hashGenesisBlock == uint256("0x004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9"));
+        
+// Testnet3 Genesis Block
+genesis = CreateGenesisBlock(1296688602, 133, 0x1f00ffff, 1, 50 * COIN);
+consensus.hashGenesisBlock = uint256("004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9");
+assert(consensus.hashGenesisBlock == uint256("004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9"));
+
 
 
         vFixedSeeds.clear();
@@ -363,9 +369,12 @@ public:
         const char* testnet4_genesis_msg = "03/May/2024 000000000000000000001ebd58c244970b3aa9d783bb001011fbe8ea8e98e00e";
         const CScript testnet4_genesis_script = CScript() << "000000000000000000000000000000000000000000000000000000000000000000"_hex << OP_CHECKSIG;
         // Testnet4 Genesis Block
-        genesis = CreateGenesisBlock(1714777860, 402, 0x1f00ffff, 1, 50 * COIN);
-        consensus.hashGenesisBlock = uint256("0x0011551dedbc24d0228928acda77f903768fd43c2094a0fb92479bd8e037376a");
-        assert(consensus.hashGenesisBlock == uint256("0x0011551dedbc24d0228928acda77f903768fd43c2094a0fb92479bd8e037376a"));
+// Testnet4 Genesis Block
+genesis = CreateGenesisBlock(1714777860, 402, 0x1f00ffff, 1, 50 * COIN);
+consensus.hashGenesisBlock = uint256("0011551dedbc24d0228928acda77f903768fd43c2094a0fb92479bd8e037376a");
+assert(consensus.hashGenesisBlock == uint256("0011551dedbc24d0228928acda77f903768fd43c2094a0fb92479bd8e037376a"));
+
+
         assert(genesis.hashMerkleRoot == uint256{"7aa0a7ae1e223414cb807e40cd57e667b718e42aaf9306db9102fe28912b7b4e"});
 
         vFixedSeeds.clear();
@@ -493,9 +502,11 @@ public:
         nPruneAfterHeight = 1000;
 
         // Regtest Genesis Block
-        genesis = CreateGenesisBlock(1598918400, 348, 0x1f00ffff, 1, 50 * COIN);
-        consensus.hashGenesisBlock = uint256("0x00463c31842702e80b225d3583ec57460ff33d7c7ec202e93ab7c79ed7ecfb9d");
-        assert(consensus.hashGenesisBlock == uint256("0x00463c31842702e80b225d3583ec57460ff33d7c7ec202e93ab7c79ed7ecfb9d"));
+// Regtest Genesis Block
+genesis = CreateGenesisBlock(1598918400, 348, 0x1f00ffff, 1, 50 * COIN);
+consensus.hashGenesisBlock = uint256("00463c31842702e80b225d3583ec57460ff33d7c7ec202e93ab7c79ed7ecfb9d");
+assert(consensus.hashGenesisBlock == uint256("00463c31842702e80b225d3583ec57460ff33d7c7ec202e93ab7c79ed7ecfb9d"));
+
         assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
 
         vFixedSeeds.clear();
