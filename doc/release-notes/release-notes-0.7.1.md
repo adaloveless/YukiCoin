@@ -77,7 +77,7 @@ Bug fixes
 
 * Clicking on a YukiCoin: URI on Windows should now launch YukiCoin-Qt properly.
 
-* When running -testnet, use RPC port 18332 by default.
+* When running -testnet, use RPC port 18995 by default.
 
 * Better detection and handling of corrupt wallet.dat and blkindex.dat files.
   Previous versions would crash with a DB_RUNRECOVERY exception, this

@@ -81,8 +81,8 @@ The high water mark value must be an integer greater than or equal to 0.
 
 For instance:
 
-    $ YukiCoind -zmqpubhashtx=tcp://127.0.0.1:28332 \
-               -zmqpubhashtx=tcp://192.168.1.2:28332 \
+    $ YukiCoind -zmqpubhashtx=tcp://127.0.0.1:28995 \
+               -zmqpubhashtx=tcp://192.168.1.2:28995 \
                -zmqpubhashblock="tcp://[::1]:28333" \
                -zmqpubrawtx=ipc:///tmp/YukiCoind.tx.raw \
                -zmqpubhashtxhwm=10000
