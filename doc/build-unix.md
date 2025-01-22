@@ -20,7 +20,7 @@ sudo apt-get install libqrencode-dev
 
 Some notes on how to build YukiCoin Core in Unix.
 
-cmake -B build
+cmake -B build -DBUILD_TESTS=OFF -DENABLE_WYCHEPROOF=OFF
 cmake --build build    # use "-j N" for N parallel jobs
 cmake --install build  # optional
 
