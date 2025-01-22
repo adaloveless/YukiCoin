@@ -648,7 +648,7 @@ std::cout << "Got Genesis Hash: " << genesis.hashGenesisBlock.ToString() << std:
         assert(consensus.hashGenesisBlock == uint256{"00463c31842702e80b225d3583ec57460ff33d7c7ec202e93ab7c79ed7ecfb9d"});
         // Log the expected and actual Merkle root before assertion
 std::cout << "Expected Merkle Root: 00dbdd49c3a47d7a6ecd866094d650cfdb09d00b7e3cdce5dd2359cd4dfab533" << std::endl;
-std::cout << "Actual Merkle Root: " << genesis.hashMerkleRoot.ToString() << std::endl;
+std::cout << "Actual Merkle Root: " << genesis.hashMerkleRoot.GetHash() << std::endl;
         assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
