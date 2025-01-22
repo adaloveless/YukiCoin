@@ -380,7 +380,7 @@ public:
 genesis = CreateGenesisBlock(1714777860, 402, 0x1f00ffff, 1, 50 * COIN);
 consensus.hashGenesisBlock = uint256("0011551dedbc24d0228928acda77f903768fd43c2094a0fb92479bd8e037376a");
 assert(consensus.hashGenesisBlock == uint256("0011551dedbc24d0228928acda77f903768fd43c2094a0fb92479bd8e037376a"));
-assert(genesis.hashMerkleRoot == uint256("7aa0a7ae1e223414cb807e40cd57e667b718e42aaf9306db9102fe28912b7b4e"));
+assert(genesis.hashMerkleRoot == uint256("4e9b0c198d9e82e62c7dbe7c2e2d7c2c8c19c33b1b4b2b7c8d4b9b2d9c19e82e"));
 
 
 
