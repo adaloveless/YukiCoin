@@ -268,7 +268,7 @@ public:
 // Testnet3 Genesis Block
 genesis = CreateGenesisBlock(1296688602, 133, 0x1f00ffff, 1, 50 * COIN);
 consensus.hashGenesisBlock = uint256("004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9");
-assert(consensus.hashGenesisBlock == uint256("004fedac9d3253e2fd390b35a897200acb0174e05ee07b4149e1b29ab7750aa9"));
+assert(consensus.hashGenesisBlock == uint256("4e9b0c198d9e82e62c7dbe7c2e2d7c2c8c19c33b1b4b2b7c8d4b9b2d9c19e82e"));
 
 
 
