@@ -73,7 +73,7 @@ class SimulateTxTest(YukiCoinTestFramework):
         tx1changepos = funding["changepos"]
         YukiCoin_fee = Decimal(funding["fee"])
 
-        # w0 sees fee + 5 btc decrease, w2 sees + 5 btc
+        # w0 sees fee + 5 yki decrease, w2 sees + 5 yki
         assert_approx(w0.simulaterawtransaction([tx1])["balance_change"], -(Decimal("5") + YukiCoin_fee))
         assert_approx(w2.simulaterawtransaction([tx1])["balance_change"], Decimal("5"))
 

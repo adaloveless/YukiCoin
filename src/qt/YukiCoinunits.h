@@ -41,8 +41,8 @@ public:
      */
     enum class Unit {
         YKI,
-        mBTC,
-        uBTC,
+        mYKI,
+        uYKI,
         SAT
     };
     Q_ENUM(Unit)

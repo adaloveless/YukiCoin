@@ -10,7 +10,7 @@
 
 #include <cassert>
 
-static constexpr auto MAX_DIGITS_BTC = 16;
+static constexpr auto MAX_DIGITS_YKI = 16;
 
 YukiCoinUnits::YukiCoinUnits(QObject *parent):
         QAbstractListModel(parent),
@@ -22,8 +22,8 @@ QList<YukiCoinUnit> YukiCoinUnits::availableUnits()
 {
     QList<YukiCoinUnit> unitlist;
     unitlist.append(Unit::YKI);
-    unitlist.append(Unit::mBTC);
-    unitlist.append(Unit::uBTC);
+    unitlist.append(Unit::mYKI);
+    unitlist.append(Unit::uYKI);
     unitlist.append(Unit::SAT);
     return unitlist;
 }
@@ -32,8 +32,8 @@ QString YukiCoinUnits::longName(Unit unit)
 {
     switch (unit) {
     case Unit::YKI: return QString("YKI");
-    case Unit::mBTC: return QString("mBTC");
-    case Unit::uBTC: return QString::fromUtf8("µBTC (bits)");
+    case Unit::mYKI: return QString("mYKI");
+    case Unit::uYKI: return QString::fromUtf8("µYKI (bits)");
     case Unit::SAT: return QString("Satoshi (sat)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
@@ -43,8 +43,8 @@ QString YukiCoinUnits::shortName(Unit unit)
 {
     switch (unit) {
     case Unit::YKI: return longName(unit);
-    case Unit::mBTC: return longName(unit);
-    case Unit::uBTC: return QString("bits");
+    case Unit::mYKI: return longName(unit);
+    case Unit::uYKI: return QString("bits");
     case Unit::SAT: return QString("sat");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
@@ -54,8 +54,8 @@ QString YukiCoinUnits::description(Unit unit)
 {
     switch (unit) {
     case Unit::YKI: return QString("YukiCoins");
-    case Unit::mBTC: return QString("Milli-YukiCoins (1 / 1" THIN_SP_UTF8 "000)");
-    case Unit::uBTC: return QString("Micro-YukiCoins (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case Unit::mYKI: return QString("Milli-YukiCoins (1 / 1" THIN_SP_UTF8 "000)");
+    case Unit::uYKI: return QString("Micro-YukiCoins (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     case Unit::SAT: return QString("Satoshi (sat) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
@@ -65,8 +65,8 @@ qint64 YukiCoinUnits::factor(Unit unit)
 {
     switch (unit) {
     case Unit::YKI: return 100'000'000;
-    case Unit::mBTC: return 100'000;
-    case Unit::uBTC: return 100;
+    case Unit::mYKI: return 100'000;
+    case Unit::uYKI: return 100;
     case Unit::SAT: return 1;
     } // no default case, so the compiler can warn about missing cases
     assert(false);
@@ -76,8 +76,8 @@ int YukiCoinUnits::decimals(Unit unit)
 {
     switch (unit) {
     case Unit::YKI: return 8;
-    case Unit::mBTC: return 5;
-    case Unit::uBTC: return 2;
+    case Unit::mYKI: return 5;
+    case Unit::uYKI: return 2;
     case Unit::SAT: return 0;
     } // no default case, so the compiler can warn about missing cases
     assert(false);
@@ -94,7 +94,7 @@ QString YukiCoinUnits::format(Unit unit, const CAmount& nIn, bool fPlus, Separat
     qint64 quotient = n_abs / coin;
     QString quotient_str = QString::number(quotient);
     if (justify) {
-        quotient_str = quotient_str.rightJustified(MAX_DIGITS_BTC - num_decimals, ' ');
+        quotient_str = quotient_str.rightJustified(MAX_DIGITS_YKI - num_decimals, ' ');
     }
 
     // Use SI-style thin space separators as these are locale independent and can't be
@@ -233,8 +233,8 @@ qint8 ToQint8(YukiCoinUnit unit)
 {
     switch (unit) {
     case YukiCoinUnit::YKI: return 0;
-    case YukiCoinUnit::mBTC: return 1;
-    case YukiCoinUnit::uBTC: return 2;
+    case YukiCoinUnit::mYKI: return 1;
+    case YukiCoinUnit::uYKI: return 2;
     case YukiCoinUnit::SAT: return 3;
     } // no default case, so the compiler can warn about missing cases
     assert(false);
@@ -244,8 +244,8 @@ YukiCoinUnit FromQint8(qint8 num)
 {
     switch (num) {
     case 0: return YukiCoinUnit::YKI;
-    case 1: return YukiCoinUnit::mBTC;
-    case 2: return YukiCoinUnit::uBTC;
+    case 1: return YukiCoinUnit::mYKI;
+    case 2: return YukiCoinUnit::uYKI;
     case 3: return YukiCoinUnit::SAT;
     }
     assert(false);
