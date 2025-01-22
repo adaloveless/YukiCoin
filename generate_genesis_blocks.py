@@ -3,7 +3,7 @@ import struct
 
 def calculate_hash(version, prev_block, merkle_root, timestamp, bits, nonce):
     """
-    Calculate the SHA-256 double-hash of the block header.
+    Calculate the SHA256 double-hash of the block header.
     """
     header = (
         struct.pack("<L", version) +
@@ -17,28 +17,34 @@ def calculate_hash(version, prev_block, merkle_root, timestamp, bits, nonce):
     hash2 = hashlib.sha256(hash1).digest()
     return hash2[::-1].hex()
 
-def mine_genesis_block(version, prev_block, merkle_root, timestamp, bits, target_difficulty):
+def mine_genesis_block(network_name, version, prev_block, merkle_root, timestamp, bits):
     """
     Mine a genesis block by iterating the nonce to find a valid hash.
     """
     nonce = 0
-    target = (1 << (256 - target_difficulty)) - 1
+    # Lower the difficulty target significantly
+    target = (1 << (256 - 8)) - 1  # Very low difficulty (1 leading zero in hex)
+    print(f"Mining {network_name} Genesis Block with reduced difficulty...")
+
     while True:
         hash = calculate_hash(version, prev_block, merkle_root, timestamp, bits, nonce)
         if int(hash, 16) < target:
+            print(f"{network_name} Genesis Hash: {hash}")
+            print(f"{network_name} Nonce: {nonce}")
             return hash, nonce
         nonce += 1
+        if nonce % 100000 == 0:
+            print(f"{network_name}: Still mining... Nonce = {nonce}")
 
-# Parameters for YukiCoin genesis blocks
+# Parameters for each genesis block
 genesis_blocks = [
     {
         "name": "Mainnet",
         "version": 1,
-        "prev_block": "0" * 64,        # Previous block hash (all zeros for genesis block)
+        "prev_block": "0" * 64,        # Previous block hash
         "merkle_root": "0" * 64,      # Replace with actual merkle root if available
         "timestamp": 1231006505,      # Timestamp
-        "bits": 0x1d00ffff,           # Difficulty bits
-        "target_difficulty": 32       # Adjust for faster mining during testing
+        "bits": 0x1f00ffff,           # Reduced difficulty bits
     },
     {
         "name": "Testnet3",
@@ -46,8 +52,7 @@ genesis_blocks = [
         "prev_block": "0" * 64,
         "merkle_root": "0" * 64,
         "timestamp": 1296688602,
-        "bits": 0x1d00ffff,
-        "target_difficulty": 32
+        "bits": 0x1f00ffff,
     },
     {
         "name": "Testnet4",
@@ -55,8 +60,7 @@ genesis_blocks = [
         "prev_block": "0" * 64,
         "merkle_root": "0" * 64,
         "timestamp": 1714777860,
-        "bits": 0x1d00ffff,
-        "target_difficulty": 32
+        "bits": 0x1f00ffff,
     },
     {
         "name": "Regtest",
@@ -64,22 +68,21 @@ genesis_blocks = [
         "prev_block": "0" * 64,
         "merkle_root": "0" * 64,
         "timestamp": 1598918400,
-        "bits": 0x1e03ffff,
-        "target_difficulty": 32
-    }
+        "bits": 0x1f00ffff,
+    },
 ]
 
-# Mine each genesis block and print results
+# Mine each genesis block
 for block in genesis_blocks:
-    print(f"Mining {block['name']} Genesis Block...")
-    genesis_hash, nonce = mine_genesis_block(
-        block['version'],
-        block['prev_block'],
-        block['merkle_root'],
-        block['timestamp'],
-        block['bits'],
-        block['target_difficulty']
+    hash, nonce = mine_genesis_block(
+        block["name"],
+        block["version"],
+        block["prev_block"],
+        block["merkle_root"],
+        block["timestamp"],
+        block["bits"],
     )
-    print(f"{block['name']} Genesis Hash: {genesis_hash}")
-    print(f"{block['name']} Nonce: {nonce}")
+    print(f"{block['name']} Results:")
+    print(f"  Genesis Hash: {hash}")
+    print(f"  Nonce: {nonce}")
     print()
