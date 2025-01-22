@@ -21,7 +21,7 @@ YukiCoinUnits::YukiCoinUnits(QObject *parent):
 QList<YukiCoinUnit> YukiCoinUnits::availableUnits()
 {
     QList<YukiCoinUnit> unitlist;
-    unitlist.append(Unit::BTC);
+    unitlist.append(Unit::YKI);
     unitlist.append(Unit::mBTC);
     unitlist.append(Unit::uBTC);
     unitlist.append(Unit::SAT);
@@ -31,7 +31,7 @@ QList<YukiCoinUnit> YukiCoinUnits::availableUnits()
 QString YukiCoinUnits::longName(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return QString("BTC");
+    case Unit::YKI: return QString("YKI");
     case Unit::mBTC: return QString("mBTC");
     case Unit::uBTC: return QString::fromUtf8("µBTC (bits)");
     case Unit::SAT: return QString("Satoshi (sat)");
@@ -42,7 +42,7 @@ QString YukiCoinUnits::longName(Unit unit)
 QString YukiCoinUnits::shortName(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return longName(unit);
+    case Unit::YKI: return longName(unit);
     case Unit::mBTC: return longName(unit);
     case Unit::uBTC: return QString("bits");
     case Unit::SAT: return QString("sat");
@@ -53,7 +53,7 @@ QString YukiCoinUnits::shortName(Unit unit)
 QString YukiCoinUnits::description(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return QString("YukiCoins");
+    case Unit::YKI: return QString("YukiCoins");
     case Unit::mBTC: return QString("Milli-YukiCoins (1 / 1" THIN_SP_UTF8 "000)");
     case Unit::uBTC: return QString("Micro-YukiCoins (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     case Unit::SAT: return QString("Satoshi (sat) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
@@ -64,7 +64,7 @@ QString YukiCoinUnits::description(Unit unit)
 qint64 YukiCoinUnits::factor(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return 100'000'000;
+    case Unit::YKI: return 100'000'000;
     case Unit::mBTC: return 100'000;
     case Unit::uBTC: return 100;
     case Unit::SAT: return 1;
@@ -75,7 +75,7 @@ qint64 YukiCoinUnits::factor(Unit unit)
 int YukiCoinUnits::decimals(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return 8;
+    case Unit::YKI: return 8;
     case Unit::mBTC: return 5;
     case Unit::uBTC: return 2;
     case Unit::SAT: return 0;
@@ -232,7 +232,7 @@ namespace {
 qint8 ToQint8(YukiCoinUnit unit)
 {
     switch (unit) {
-    case YukiCoinUnit::BTC: return 0;
+    case YukiCoinUnit::YKI: return 0;
     case YukiCoinUnit::mBTC: return 1;
     case YukiCoinUnit::uBTC: return 2;
     case YukiCoinUnit::SAT: return 3;
@@ -243,7 +243,7 @@ qint8 ToQint8(YukiCoinUnit unit)
 YukiCoinUnit FromQint8(qint8 num)
 {
     switch (num) {
-    case 0: return YukiCoinUnit::BTC;
+    case 0: return YukiCoinUnit::YKI;
     case 1: return YukiCoinUnit::mBTC;
     case 2: return YukiCoinUnit::uBTC;
     case 3: return YukiCoinUnit::SAT;

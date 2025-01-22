@@ -47,7 +47,7 @@ class TxnMallTest(YukiCoinTestFramework):
         else:
             output_type = "legacy"
 
-        # All nodes should start with 1,250 BTC:
+        # All nodes should start with 1,250 YKI:
         starting_balance = 1250
         for i in range(3):
             assert_equal(self.nodes[i].getbalance(), starting_balance)
@@ -140,7 +140,7 @@ class TxnMallTest(YukiCoinTestFramework):
         assert_equal(tx1_clone["confirmations"], 2)
         assert_equal(tx2["confirmations"], 1)
 
-        # Check node0's total balance; should be same as before the clone, + 100 BTC for 2 matured,
+        # Check node0's total balance; should be same as before the clone, + 100 YKI for 2 matured,
         # less possible orphaned matured subsidy
         expected += 100
         if (self.options.mine_block):

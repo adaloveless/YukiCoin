@@ -125,7 +125,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = GUIUtil::TextWidth(fm, YukiCoinUnits::format(YukiCoinUnit::BTC, YukiCoinUnits::maxMoney(), false, YukiCoinUnits::SeparatorStyle::ALWAYS));
+            int w = GUIUtil::TextWidth(fm, YukiCoinUnits::format(YukiCoinUnit::YKI, YukiCoinUnits::maxMoney(), false, YukiCoinUnits::SeparatorStyle::ALWAYS));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -150,7 +150,7 @@ public:
     }
 
 private:
-    YukiCoinUnit currentUnit{YukiCoinUnit::BTC};
+    YukiCoinUnit currentUnit{YukiCoinUnit::YKI};
     CAmount singleStep{CAmount(100000)}; // satoshis
     mutable QSize cachedMinimumSizeHint;
     bool m_allow_empty{true};

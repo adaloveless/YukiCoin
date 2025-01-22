@@ -61,7 +61,7 @@ To run:
 
 * UI elements like YukiCoinAmountField, which inherit from QWidget.
 * `YukiCoinstrings.cpp`: automatically generated
-* `YukiCoinunits.(h/cpp)`: BTC / mBTC / etc. handling
+* `YukiCoinunits.(h/cpp)`: YKI / mBTC / etc. handling
 * `callback.h`
 * `guiconstants.h`: UI colors, app name, etc.
 * `guiutil.h`: several helper functions

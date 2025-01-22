@@ -39,7 +39,7 @@ class TransactionTimeRescanTest(YukiCoinTestFramework):
     def run_test(self):
         self.log.info('Prepare nodes and wallet')
 
-        minernode = self.nodes[0]  # node used to mine BTC and create transactions
+        minernode = self.nodes[0]  # node used to mine YKI and create transactions
         usernode = self.nodes[1]  # user node with correct time
         restorenode = self.nodes[2]  # node used to restore user wallet and check time determination in ComputeSmartTime (wallet.cpp)
 
