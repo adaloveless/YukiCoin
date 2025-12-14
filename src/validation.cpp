@@ -1939,13 +1939,34 @@ PackageMempoolAcceptResult ProcessNewPackage(Chainstate& active_chainstate, CTxM
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-    int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
+    // YukiCoin emission schedule - rewards early adoption while maintaining long-term interest
+    // At 2.5 min blocks: ~210,384 blocks per year
+    constexpr int BLOCKS_PER_YEAR = 210384;
+
+    // Year 1: 500 YUKI per block (10x bonus - gives early miners ~42% of supply)
+    if (nHeight < BLOCKS_PER_YEAR) {
+        return 500 * COIN;
+    }
+    // Year 2: 200 YUKI per block (4x bonus)
+    if (nHeight < BLOCKS_PER_YEAR * 2) {
+        return 200 * COIN;
+    }
+    // Year 3: 100 YUKI per block (2x bonus)
+    if (nHeight < BLOCKS_PER_YEAR * 3) {
+        return 100 * COIN;
+    }
+
+    // Year 4+: Standard halving schedule starting at 50 YUKI
+    // Adjust height to start halving count from year 4
+    int adjustedHeight = nHeight - (BLOCKS_PER_YEAR * 3);
+    int halvings = adjustedHeight / consensusParams.nSubsidyHalvingInterval;
+
     // Force block reward to zero when right shift is undefined.
     if (halvings >= 64)
         return 0;
 
     CAmount nSubsidy = 50 * COIN;
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
+    // Subsidy is cut in half every 840,000 blocks (~4 years)
     nSubsidy >>= halvings;
     return nSubsidy;
 }
@@ -3955,8 +3976,8 @@ void ChainstateManager::ReceivedBlockTransactions(const CBlock& block, CBlockInd
 
 static bool CheckBlockHeader(const CBlockHeader& block, BlockValidationState& state, const Consensus::Params& consensusParams, bool fCheckPOW = true)
 {
-    // Check proof of work matches claimed amount
-    if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
+    // Check proof of work matches claimed amount (using Scrypt hash for PoW)
+    if (fCheckPOW && !CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams))
         return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "high-hash", "proof of work failed");
 
     return true;
@@ -4150,7 +4171,7 @@ std::vector<unsigned char> ChainstateManager::GenerateCoinbaseCommitment(CBlock&
 bool HasValidProofOfWork(const std::vector<CBlockHeader>& headers, const Consensus::Params& consensusParams)
 {
     return std::all_of(headers.cbegin(), headers.cend(),
-            [&](const auto& header) { return CheckProofOfWork(header.GetHash(), header.nBits, consensusParams);});
+            [&](const auto& header) { return CheckProofOfWork(header.GetPoWHash(), header.nBits, consensusParams);});
 }
 
 bool IsBlockMutated(const CBlock& block, bool check_witness_root)

@@ -53,6 +53,9 @@ public:
 
     uint256 GetHash() const;
 
+    // Scrypt proof-of-work hash for mining
+    uint256 GetPoWHash() const;
+
     NodeSeconds Time() const
     {
         return NodeSeconds{std::chrono::seconds{nTime}};

@@ -8,22 +8,22 @@
 
 #include <cstdint>
 
-/** Amount in satoshis (Can be negative) */
+/** Amount in yukis (smallest unit, Can be negative) */
 typedef int64_t CAmount;
 
-/** The amount of satoshis in one BTC. */
+/** The amount of yukis (smallest unit) in one YUKI. */
 static constexpr CAmount COIN = 100000000;
 
-/** No amount larger than this (in satoshi) is valid.
+/** No amount larger than this (in yuki) is valid.
  *
- * Note that this constant is *not* the total money supply, which in YukiCoin
- * currently happens to be less than 21,000,000 BTC for various reasons, but
- * rather a sanity check. As this sanity check is used by consensus-critical
- * validation code, the exact value of the MAX_MONEY constant is consensus
- * critical; in unusual circumstances like a(nother) overflow bug that allowed
- * for the creation of coins out of thin air modification could lead to a fork.
+ * YukiCoin emission schedule:
+ *   Year 1: 500 YUKI/block  (~105 million YUKI, 42% of supply)
+ *   Year 2: 200 YUKI/block  (~42 million YUKI, 17%)
+ *   Year 3: 100 YUKI/block  (~21 million YUKI, 8%)
+ *   Year 4+: 50 YUKI/block with halving every 840,000 blocks (~84 million YUKI, 33%)
+ * Total maximum supply: ~252 million YUKI
  * */
-static constexpr CAmount MAX_MONEY = 21000000 * COIN;
+static constexpr CAmount MAX_MONEY = 260000000 * COIN;
 inline bool MoneyRange(const CAmount& nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 
 #endif // YukiCoin_CONSENSUS_AMOUNT_H

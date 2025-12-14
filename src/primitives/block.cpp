@@ -5,12 +5,24 @@
 
 #include <primitives/block.h>
 
+#include <crypto/scrypt.h>
 #include <hash.h>
+#include <streams.h>
 #include <tinyformat.h>
 
 uint256 CBlockHeader::GetHash() const
 {
     return (HashWriter{} << *this).GetHash();
+}
+
+uint256 CBlockHeader::GetPoWHash() const
+{
+    uint256 thash;
+    // Serialize the block header (80 bytes) for Scrypt hashing
+    std::vector<unsigned char> vch;
+    VectorWriter{vch, 0, *this};
+    scrypt_hash((const char*)vch.data(), (char*)thash.begin());
+    return thash;
 }
 
 std::string CBlock::ToString() const
