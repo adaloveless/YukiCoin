@@ -40,10 +40,10 @@ public:
       @note Source: https://en.YukiCoin.it/wiki/Units . Please add only sensible ones
      */
     enum class Unit {
-        BTC,
-        mBTC,
-        uBTC,
-        SAT
+        UKI,
+        mUKI,
+        uUKI,
+        YUKI
     };
     Q_ENUM(Unit)
 

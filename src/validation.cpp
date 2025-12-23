@@ -1939,24 +1939,29 @@ PackageMempoolAcceptResult ProcessNewPackage(Chainstate& active_chainstate, CTxM
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-    // YukiCoin emission schedule - rewards early adoption while maintaining long-term interest
-    // At 2.5 min blocks: ~210,384 blocks per year
+    // YukiCoin emission schedule - rewards founder/early adoption with ~1 billion total supply
+    // At 2.5 min blocks: ~210,384 blocks per year, ~17,532 blocks per month
     constexpr int BLOCKS_PER_YEAR = 210384;
+    constexpr int BLOCKS_PER_MONTH = BLOCKS_PER_YEAR / 12; // ~17,532 blocks
 
-    // Year 1: 500 YUKI per block (10x bonus - gives early miners ~42% of supply)
+    // First month: 25,000 YUKI per block (~438 million, ~46% of total supply)
+    if (nHeight < BLOCKS_PER_MONTH) {
+        return 25000 * COIN;
+    }
+    // Rest of Year 1: 1,000 YUKI per block (~193 million)
     if (nHeight < BLOCKS_PER_YEAR) {
+        return 1000 * COIN;
+    }
+    // Year 2: 500 YUKI per block (~105 million)
+    if (nHeight < BLOCKS_PER_YEAR * 2) {
         return 500 * COIN;
     }
-    // Year 2: 200 YUKI per block (4x bonus)
-    if (nHeight < BLOCKS_PER_YEAR * 2) {
-        return 200 * COIN;
-    }
-    // Year 3: 100 YUKI per block (2x bonus)
+    // Year 3: 250 YUKI per block (~53 million)
     if (nHeight < BLOCKS_PER_YEAR * 3) {
-        return 100 * COIN;
+        return 250 * COIN;
     }
 
-    // Year 4+: Standard halving schedule starting at 50 YUKI
+    // Year 4+: Standard halving schedule starting at 100 YUKI
     // Adjust height to start halving count from year 4
     int adjustedHeight = nHeight - (BLOCKS_PER_YEAR * 3);
     int halvings = adjustedHeight / consensusParams.nSubsidyHalvingInterval;
@@ -1965,7 +1970,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     if (halvings >= 64)
         return 0;
 
-    CAmount nSubsidy = 50 * COIN;
+    CAmount nSubsidy = 100 * COIN;
     // Subsidy is cut in half every 840,000 blocks (~4 years)
     nSubsidy >>= halvings;
     return nSubsidy;

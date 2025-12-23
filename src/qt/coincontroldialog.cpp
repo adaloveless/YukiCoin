@@ -492,7 +492,7 @@ void CoinControlDialog::updateLabels(CCoinControl& m_coin_control, WalletModel *
     }
 
     // actually update labels
-    YukiCoinUnit nDisplayUnit = YukiCoinUnit::BTC;
+    YukiCoinUnit nDisplayUnit = YukiCoinUnit::UKI;
     if (model && model->getOptionsModel())
         nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 

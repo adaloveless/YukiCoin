@@ -10,7 +10,7 @@
 
 #include <cassert>
 
-static constexpr auto MAX_DIGITS_BTC = 16;
+static constexpr auto MAX_DIGITS_UKI = 16;
 
 YukiCoinUnits::YukiCoinUnits(QObject *parent):
         QAbstractListModel(parent),
@@ -21,20 +21,20 @@ YukiCoinUnits::YukiCoinUnits(QObject *parent):
 QList<YukiCoinUnit> YukiCoinUnits::availableUnits()
 {
     QList<YukiCoinUnit> unitlist;
-    unitlist.append(Unit::BTC);
-    unitlist.append(Unit::mBTC);
-    unitlist.append(Unit::uBTC);
-    unitlist.append(Unit::SAT);
+    unitlist.append(Unit::UKI);
+    unitlist.append(Unit::mUKI);
+    unitlist.append(Unit::uUKI);
+    unitlist.append(Unit::YUKI);
     return unitlist;
 }
 
 QString YukiCoinUnits::longName(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return QString("BTC");
-    case Unit::mBTC: return QString("mBTC");
-    case Unit::uBTC: return QString::fromUtf8("µBTC (bits)");
-    case Unit::SAT: return QString("Satoshi (sat)");
+    case Unit::UKI: return QString("UKI");
+    case Unit::mUKI: return QString("mUKI");
+    case Unit::uUKI: return QString::fromUtf8("µUKI (bits)");
+    case Unit::YUKI: return QString("Yuki (yuki)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -42,10 +42,10 @@ QString YukiCoinUnits::longName(Unit unit)
 QString YukiCoinUnits::shortName(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return longName(unit);
-    case Unit::mBTC: return longName(unit);
-    case Unit::uBTC: return QString("bits");
-    case Unit::SAT: return QString("sat");
+    case Unit::UKI: return longName(unit);
+    case Unit::mUKI: return longName(unit);
+    case Unit::uUKI: return QString("bits");
+    case Unit::YUKI: return QString("yuki");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -53,10 +53,10 @@ QString YukiCoinUnits::shortName(Unit unit)
 QString YukiCoinUnits::description(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return QString("YukiCoins");
-    case Unit::mBTC: return QString("Milli-YukiCoins (1 / 1" THIN_SP_UTF8 "000)");
-    case Unit::uBTC: return QString("Micro-YukiCoins (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-    case Unit::SAT: return QString("Satoshi (sat) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case Unit::UKI: return QString("YukiCoins");
+    case Unit::mUKI: return QString("Milli-YukiCoins (1 / 1" THIN_SP_UTF8 "000)");
+    case Unit::uUKI: return QString("Micro-YukiCoins (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case Unit::YUKI: return QString("Yuki (yuki) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -64,10 +64,10 @@ QString YukiCoinUnits::description(Unit unit)
 qint64 YukiCoinUnits::factor(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return 100'000'000;
-    case Unit::mBTC: return 100'000;
-    case Unit::uBTC: return 100;
-    case Unit::SAT: return 1;
+    case Unit::UKI: return 100'000'000;
+    case Unit::mUKI: return 100'000;
+    case Unit::uUKI: return 100;
+    case Unit::YUKI: return 1;
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -75,10 +75,10 @@ qint64 YukiCoinUnits::factor(Unit unit)
 int YukiCoinUnits::decimals(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return 8;
-    case Unit::mBTC: return 5;
-    case Unit::uBTC: return 2;
-    case Unit::SAT: return 0;
+    case Unit::UKI: return 8;
+    case Unit::mUKI: return 5;
+    case Unit::uUKI: return 2;
+    case Unit::YUKI: return 0;
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -94,7 +94,7 @@ QString YukiCoinUnits::format(Unit unit, const CAmount& nIn, bool fPlus, Separat
     qint64 quotient = n_abs / coin;
     QString quotient_str = QString::number(quotient);
     if (justify) {
-        quotient_str = quotient_str.rightJustified(MAX_DIGITS_BTC - num_decimals, ' ');
+        quotient_str = quotient_str.rightJustified(MAX_DIGITS_UKI - num_decimals, ' ');
     }
 
     // Use SI-style thin space separators as these are locale independent and can't be
@@ -232,10 +232,10 @@ namespace {
 qint8 ToQint8(YukiCoinUnit unit)
 {
     switch (unit) {
-    case YukiCoinUnit::BTC: return 0;
-    case YukiCoinUnit::mBTC: return 1;
-    case YukiCoinUnit::uBTC: return 2;
-    case YukiCoinUnit::SAT: return 3;
+    case YukiCoinUnit::UKI: return 0;
+    case YukiCoinUnit::mUKI: return 1;
+    case YukiCoinUnit::uUKI: return 2;
+    case YukiCoinUnit::YUKI: return 3;
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -243,10 +243,10 @@ qint8 ToQint8(YukiCoinUnit unit)
 YukiCoinUnit FromQint8(qint8 num)
 {
     switch (num) {
-    case 0: return YukiCoinUnit::BTC;
-    case 1: return YukiCoinUnit::mBTC;
-    case 2: return YukiCoinUnit::uBTC;
-    case 3: return YukiCoinUnit::SAT;
+    case 0: return YukiCoinUnit::UKI;
+    case 1: return YukiCoinUnit::mUKI;
+    case 2: return YukiCoinUnit::uUKI;
+    case 3: return YukiCoinUnit::YUKI;
     }
     assert(false);
 }

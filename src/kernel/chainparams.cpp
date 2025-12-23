@@ -130,16 +130,15 @@ public:
         m_assumed_blockchain_size = 1;
         m_assumed_chain_state_size = 1;
 
-        // Genesis block - TODO: Mine actual genesis block with contrib/genesis/genesis_miner
-        // These are placeholder values - run the genesis miner to get real values
-        genesis = CreateGenesisBlock(1734220800, 0, 0x1e0ffff0, 1, 50 * COIN);
+        // Genesis block - mined with Scrypt PoW
+        genesis = CreateGenesisBlock(1734220800, 420519, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        // TODO: Update these assertions after mining genesis block
-        // assert(consensus.hashGenesisBlock == uint256{"<genesis_hash>"});
-        // assert(genesis.hashMerkleRoot == uint256{"<merkle_root>"});
+        assert(consensus.hashGenesisBlock == uint256{"693ea6b30ee789ffeaa96f6e7db2922fd3f40ca37e20a34ba1e8dc09b6948509"});
+        assert(genesis.hashMerkleRoot == uint256{"645243103a6f87604135a0d01089c21d8512269a90328069045869bce64812f7"});
 
         // No DNS seeds initially - add your own seed nodes
         vSeeds.clear();
+        vSeeds.emplace_back("trick.social");
         // vSeeds.emplace_back("seed.yukicoin.example.com.");
 
         // YukiCoin address prefixes (Y for addresses)

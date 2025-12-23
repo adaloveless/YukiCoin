@@ -21,7 +21,7 @@ set(CLIENT_VERSION_MAJOR 28)
 set(CLIENT_VERSION_MINOR 99)
 set(CLIENT_VERSION_BUILD 0)
 set(CLIENT_VERSION_RC 0)
-set(CLIENT_VERSION_IS_RELEASE "false")
+set(CLIENT_VERSION_IS_RELEASE "true")
 set(COPYRIGHT_YEAR "2025")
 
 # During the enabling of the CXX and CXXOBJ languages, we modify
@@ -43,7 +43,7 @@ set(CMAKE_TRY_COMPILE_PLATFORM_VARIABLES
 project(YukiCoinCore
   VERSION ${CLIENT_VERSION_MAJOR}.${CLIENT_VERSION_MINOR}.${CLIENT_VERSION_BUILD}
   DESCRIPTION "YukiCoin client software"
-  HOMEPAGE_URL "https://roke.club/"
+  HOMEPAGE_URL "https://trick.social/"
   LANGUAGES NONE
 )
 

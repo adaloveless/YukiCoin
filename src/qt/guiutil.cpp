@@ -185,7 +185,7 @@ bool parseYukiCoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if (!YukiCoinUnits::parse(YukiCoinUnit::BTC, i->second, &rv.amount)) {
+                if (!YukiCoinUnits::parse(YukiCoinUnit::UKI, i->second, &rv.amount)) {
                     return false;
                 }
             }
@@ -217,7 +217,7 @@ QString formatYukiCoinURI(const SendCoinsRecipient &info)
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(YukiCoinUnits::format(YukiCoinUnit::BTC, info.amount, false, YukiCoinUnits::SeparatorStyle::NEVER));
+        ret += QString("?amount=%1").arg(YukiCoinUnits::format(YukiCoinUnit::UKI, info.amount, false, YukiCoinUnits::SeparatorStyle::NEVER));
         paramCount++;
     }
 

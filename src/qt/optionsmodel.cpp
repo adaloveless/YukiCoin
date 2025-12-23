@@ -189,13 +189,13 @@ bool OptionsModel::Init(bilingual_str& error)
 
     // Display
     if (!settings.contains("DisplayYukiCoinUnit")) {
-        settings.setValue("DisplayYukiCoinUnit", QVariant::fromValue(YukiCoinUnit::BTC));
+        settings.setValue("DisplayYukiCoinUnit", QVariant::fromValue(YukiCoinUnit::UKI));
     }
     QVariant unit = settings.value("DisplayYukiCoinUnit");
     if (unit.canConvert<YukiCoinUnit>()) {
         m_display_YukiCoin_unit = unit.value<YukiCoinUnit>();
     } else {
-        m_display_YukiCoin_unit = YukiCoinUnit::BTC;
+        m_display_YukiCoin_unit = YukiCoinUnit::UKI;
         settings.setValue("DisplayYukiCoinUnit", QVariant::fromValue(m_display_YukiCoin_unit));
     }
 
