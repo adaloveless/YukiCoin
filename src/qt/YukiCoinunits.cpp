@@ -31,10 +31,10 @@ QList<YukiCoinUnit> YukiCoinUnits::availableUnits()
 QString YukiCoinUnits::longName(Unit unit)
 {
     switch (unit) {
-    case Unit::UKI: return QString("UKI");
-    case Unit::mUKI: return QString("mUKI");
-    case Unit::uUKI: return QString::fromUtf8("µUKI (bits)");
-    case Unit::YUKI: return QString("Yuki (yuki)");
+    case Unit::UKI: return QString("YUKI");
+    case Unit::mUKI: return QString("mYUKI");
+    case Unit::uUKI: return QString::fromUtf8("µYUKI (bits)");
+    case Unit::YUKI: return QString("snow");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -45,7 +45,7 @@ QString YukiCoinUnits::shortName(Unit unit)
     case Unit::UKI: return longName(unit);
     case Unit::mUKI: return longName(unit);
     case Unit::uUKI: return QString("bits");
-    case Unit::YUKI: return QString("yuki");
+    case Unit::YUKI: return QString("snow");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -56,7 +56,7 @@ QString YukiCoinUnits::description(Unit unit)
     case Unit::UKI: return QString("YukiCoins");
     case Unit::mUKI: return QString("Milli-YukiCoins (1 / 1" THIN_SP_UTF8 "000)");
     case Unit::uUKI: return QString("Micro-YukiCoins (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-    case Unit::YUKI: return QString("Yuki (yuki) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case Unit::YUKI: return QString("snow (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }

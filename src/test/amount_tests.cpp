@@ -135,8 +135,8 @@ BOOST_AUTO_TEST_CASE(ToStringTest)
     CFeeRate feeRate;
     feeRate = CFeeRate(1);
     BOOST_CHECK_EQUAL(feeRate.ToString(), "0.00000001 UKI/kvB");
-    BOOST_CHECK_EQUAL(feeRate.ToString(FeeEstimateMode::UKI_KVB), "0.00000001 UKI/kvB");
-    BOOST_CHECK_EQUAL(feeRate.ToString(FeeEstimateMode::SAT_VB), "0.001 yuki/vB");
+    BOOST_CHECK_EQUAL(feeRate.ToString(FeeEstimateMode::YUKI_KVB), "0.00000001 YUKI/kvB");
+    BOOST_CHECK_EQUAL(feeRate.ToString(FeeEstimateMode::SAT_VB), "0.001 snow/vB");
 }
 
 BOOST_AUTO_TEST_SUITE_END()

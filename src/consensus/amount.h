@@ -8,13 +8,13 @@
 
 #include <cstdint>
 
-/** Amount in yukis (smallest unit, Can be negative) */
+/** Amount in snow (smallest unit, Can be negative) */
 typedef int64_t CAmount;
 
-/** The amount of yukis (smallest unit) in one YUKI. */
+/** The amount of snow (smallest unit) in one YUKI. */
 static constexpr CAmount COIN = 100000000;
 
-/** No amount larger than this (in yuki) is valid.
+/** No amount larger than this (in snow) is valid.
  *
  * YukiCoin emission schedule:
  *   First month: 25,000 YUKI/block  (~438 million YUKI, 46% - founder allocation)
